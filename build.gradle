@@ -1,12 +1,35 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.5.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'io.armory.spinnaker'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+//	mavenCentral()
+	mavenCentral()
+	jcenter()
+	maven { url "https://spinnaker.bintray.com/gradle" }
+	maven { url "https://plugins.gradle.org/m2/" }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	compileOnly "org.projectlombok:lombok:1.18.8"
+	annotationProcessor "org.projectlombok:lombok:1.18.8"
+
+	// https://mvnrepository.com/artifact/com.netflix.spinnaker.orca/orca-core
+	compile group: 'com.netflix.spinnaker.orca', name: 'orca-core', version: '7.6.2'
+}
+
+
 /*
-//plugins {
-//	id 'java'
-//}
-//
-//group 'io.armory'
-//version '1.0-SNAPSHOT'
-//
-//sourceCompatibility = 1.8
 
 plugins {
 	id 'org.springframework.boot' version '2.1.5.RELEASE'
@@ -16,7 +39,7 @@ plugins {
 apply plugin: 'io.spring.dependency-management'
 
 //group = 'io.armory.spinnaker'
-group = 'io.armory'
+//group = 'io.armory'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
@@ -61,8 +84,9 @@ dependencies {
 	// https://mvnrepository.com/artifact/com.netflix.spinnaker.orca/orca-core
 	compile group: 'com.netflix.spinnaker.orca', name: 'orca-core', version: '7.6.2'
 //	runtime group: 'com.netflix.spinnaker.orca', name: 'orca-core', version: '7.6.2'
-
-
 }
+
+
+
 
  */
