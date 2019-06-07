@@ -3,7 +3,4 @@ pluginManagement {
 		gradlePluginPortal()
 	}
 }
-rootProject.name = 'plugin-examples'
-include 'stage-plugin'
-include 'stage-plugin'
-
+rootProject.name = 'stage-plugin'
