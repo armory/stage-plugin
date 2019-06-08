@@ -21,11 +21,26 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	compileOnly "org.projectlombok:lombok:1.18.8"
-	annotationProcessor "org.projectlombok:lombok:1.18.8"
+    // latest lombok version
+	compileOnly "org.projectlombok:lombok"
+	annotationProcessor "org.projectlombok:lombok"
+
+	// lombok version in spinnaker dependencies
+//	compileOnly "org.projectlombok:lombok:1.16.20"
+//	annotationProcessor "org.projectlombok:lombok:1.16.20"
 
 	// https://mvnrepository.com/artifact/com.netflix.spinnaker.orca/orca-core
 	compile group: 'com.netflix.spinnaker.orca', name: 'orca-core', version: '7.6.2'
+//	compileOnly group: 'com.netflix.spinnaker.orca', name: 'orca-core', version: '7.6.2'
+
+	// https://mvnrepository.com/artifact/com.netflix.spinnaker.kork/kork-core
+//	compile group: 'com.netflix.spinnaker.kork', name: 'kork-core', version: '5.4.1'
+	compile group: 'com.netflix.spinnaker.kork', name: 'kork-core', version: '3.12.2'
+
+	// https://mvnrepository.com/artifact/com.netflix.spinnaker.kork/kork-artifacts
+//	compile group: 'com.netflix.spinnaker.kork', name: 'kork-artifacts', version: '5.4.1'
+	compile group: 'com.netflix.spinnaker.kork', name: 'kork-artifacts', version: '3.12.2'
+
 }
 
 

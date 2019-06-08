@@ -41,7 +41,7 @@ public class HelloTask implements Task {
   public @Nonnull
   TaskResult execute(@Nonnull Stage stage) {
 
-    Map outputs = new HashMap();
+    Map<String, String> outputs = new HashMap<>();
     outputs.put("yourName", yourName);
 
     HelloStage.HelloStageContext context = stage.mapTo(HelloStage.HelloStageContext.class);
