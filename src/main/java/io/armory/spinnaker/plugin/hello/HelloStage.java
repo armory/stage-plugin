@@ -26,9 +26,16 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Nullable;
 
+import lombok.extern.slf4j.Slf4j;
+import javax.annotation.PostConstruct;
+
+@Slf4j
 @Component
 public class HelloStage implements StageDefinitionBuilder {
-
+  @PostConstruct
+  public void init() {
+    log.error("HELLO WORLD");
+  }
   public static String STAGE_TYPE = "hello";
 
   @Override

@@ -1,9 +1,6 @@
 plugins {
-	id 'org.springframework.boot' version '2.1.5.RELEASE'
 	id 'java'
 }
-
-apply plugin: 'io.spring.dependency-management'
 
 group = 'io.armory.spinnaker'
 version = '0.0.1-SNAPSHOT'
@@ -18,29 +15,24 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
     // latest lombok version
-	compileOnly "org.projectlombok:lombok"
-	annotationProcessor "org.projectlombok:lombok"
+ 	compileOnly "org.projectlombok:lombok"
+ 	annotationProcessor "org.projectlombok:lombok"
 
-	// lombok version in spinnaker dependencies
-//	compileOnly "org.projectlombok:lombok:1.16.20"
-//	annotationProcessor "org.projectlombok:lombok:1.16.20"
+    // https://mvnrepository.com/artifact/org.springframework/spring-beans
+    compile group: 'org.springframework', name: 'spring-beans', version: '5.1.7.RELEASE'
+
+    // https://mvnrepository.com/artifact/org.springframework/spring-beans
+    compile group: 'org.springframework', name: 'spring-context', version: '5.1.7.RELEASE'
 
 	// https://mvnrepository.com/artifact/com.netflix.spinnaker.orca/orca-core
 	compile group: 'com.netflix.spinnaker.orca', name: 'orca-core', version: '7.6.2'
-//	compileOnly group: 'com.netflix.spinnaker.orca', name: 'orca-core', version: '7.6.2'
 
 	// https://mvnrepository.com/artifact/com.netflix.spinnaker.kork/kork-core
-//	compile group: 'com.netflix.spinnaker.kork', name: 'kork-core', version: '5.4.1'
 	compile group: 'com.netflix.spinnaker.kork', name: 'kork-core', version: '3.12.2'
 
 	// https://mvnrepository.com/artifact/com.netflix.spinnaker.kork/kork-artifacts
-//	compile group: 'com.netflix.spinnaker.kork', name: 'kork-artifacts', version: '5.4.1'
 	compile group: 'com.netflix.spinnaker.kork', name: 'kork-artifacts', version: '3.12.2'
-
 }
 
 
