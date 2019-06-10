@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 
-package io.armory.spinnaker.plugin.hello;
+package com.netflix.spinnaker.plugin.stage;
 
-//import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.netflix.spinnaker.orca.pipeline.StageDefinitionBuilder;
+import com.netflix.spinnaker.orca.pipeline.PluginStageDefintionBuilder;
 import com.netflix.spinnaker.orca.pipeline.TaskNode;
 import com.netflix.spinnaker.orca.pipeline.model.Stage;
 import org.springframework.stereotype.Component;
@@ -31,17 +30,19 @@ import javax.annotation.PostConstruct;
 
 @Slf4j
 @Component
-public class HelloStage implements StageDefinitionBuilder {
+public class HelloStage implements PluginStageDefintionBuilder {
+
   @PostConstruct
   public void init() {
     log.error("HELLO WORLD");
   }
+
   public static String STAGE_TYPE = "hello";
 
   @Override
   public void taskGraph(Stage stage, TaskNode.Builder builder) {
     // Task name can be changed per stage,
-    builder.withTask("hello", io.armory.spinnaker.plugin.hello.HelloTask.class);
+    builder.withTask("hello", HelloTask.class);
   }
 
   public static final class HelloStageContext {

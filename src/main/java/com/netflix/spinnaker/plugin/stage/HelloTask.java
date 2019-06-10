@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.armory.spinnaker.plugin.hello;
+package com.netflix.spinnaker.plugin.stage;
 
 import com.netflix.spinnaker.orca.ExecutionStatus;
 import com.netflix.spinnaker.orca.Task;
@@ -43,7 +43,6 @@ public class HelloTask implements Task {
 
     Map<String, String> outputs = new HashMap<>();
     outputs.put("yourName", yourName);
-
     HelloStage.HelloStageContext context = stage.mapTo(HelloStage.HelloStageContext.class);
 
     if (context.getYourName() == null) {
