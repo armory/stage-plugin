@@ -26,7 +26,7 @@ dependencies {
 
 	// Eventually will just pull in orca-api, no orca-core
 	// maven local
-	compile group: 'com.netflix.spinnaker.orca', name: 'orca-api', version: '7.6.2'
+//	compile group: 'com.netflix.spinnaker.orca', name: 'orca-api', version: '7.6.2'
 	// https://mvnrepository.com/artifact/com.netflix.spinnaker.orca/orca-core
 	compile group: 'com.netflix.spinnaker.orca', name: 'orca-core', version: '7.6.2'
 

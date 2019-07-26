@@ -18,23 +18,30 @@ package com.netflix.spinnaker.plugin.stage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.netflix.spinnaker.orca.pipeline.PluginStageDefintionBuilder;
+import com.netflix.spinnaker.orca.pipeline.StageDefinitionBuilder;
 import com.netflix.spinnaker.orca.pipeline.TaskNode;
 import com.netflix.spinnaker.orca.pipeline.model.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Nullable;
 
-import lombok.extern.slf4j.Slf4j;
 import javax.annotation.PostConstruct;
 
-@Slf4j
 @Component
-public class HelloStage implements PluginStageDefintionBuilder {
+public class HelloStage implements StageDefinitionBuilder {
+
+
+  private static final Logger log = LoggerFactory.getLogger(HelloStage.class);
+
+  @Value("${server.address}")
+  public String TEST_VALUE;
 
   @PostConstruct
   public void init() {
-    log.error("HELLO WORLD");
+    log.error(TEST_VALUE);
   }
 
   public static String STAGE_TYPE = "hello";
