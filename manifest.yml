@@ -1,0 +1,9 @@
+name: mysuperduperplugin
+description: My super plugin allows you to do stuff
+version: 1.2.3
+options:
+  superserver:
+    url: string
+    port: integer
+jars:
+- http://localhost:8000/stage-plugin-0.0.1-SNAPSHOT.jar
