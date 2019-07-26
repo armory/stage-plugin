@@ -36,7 +36,7 @@ public class HelloStage implements StageDefinitionBuilder {
 
   private static final Logger log = LoggerFactory.getLogger(HelloStage.class);
 
-  @Value("${server.address}")
+  @Value("${plugins.armory/mysuperduperplugin.superserver.url}")
   public String TEST_VALUE;
 
   @PostConstruct
