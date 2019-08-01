@@ -31,12 +31,19 @@ import java.util.Map;
 public class HelloTask implements Task {
 
   private final String yourName;
+  public static String TASK_NAME = "yourName";
+
 
   @Autowired
   public HelloTask(String yourName) {
     this.yourName = yourName;
   }
 
+  /**
+   * This code executes when the task is ran. This is a required method.
+   * @param stage
+   * @return
+   */
   @Override
   public @Nonnull
   TaskResult execute(@Nonnull Stage stage) {

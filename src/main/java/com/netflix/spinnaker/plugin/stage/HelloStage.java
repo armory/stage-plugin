@@ -30,28 +30,46 @@ import javax.annotation.Nullable;
 
 import javax.annotation.PostConstruct;
 
+/**
+ * Example stage that implements stage definition builder. By implementing StageDefinitionBuilder,
+ * your stage is available for use in Spinnaker.
+ */
 @Component
 public class HelloStage implements StageDefinitionBuilder {
 
-
   private static final Logger log = LoggerFactory.getLogger(HelloStage.class);
+  public static String STAGE_TYPE = "hello";
 
   @Value("${plugins.armory/mysuperduperplugin.superserver.url}")
+  /**
+   * Service configuration values are accessible by the plugin
+   */
   public String TEST_VALUE;
 
+  /**
+   * This method is not required. For this example, this method is used to show service configuration
+   * values are available during startup.
+   */
   @PostConstruct
   public void init() {
     log.error(TEST_VALUE);
   }
 
-  public static String STAGE_TYPE = "hello";
-
+  /**
+   * This method defines the set of tasks for this stage. This method is required.
+   *
+   * @param stage
+   * @param builder
+   */
   @Override
   public void taskGraph(Stage stage, TaskNode.Builder builder) {
     // Task name can be changed per stage,
-    builder.withTask("hello", HelloTask.class);
+    builder.withTask(HelloTask.TASK_NAME, HelloTask.class);
   }
 
+  /**
+   * Context for this stage. The contents of this context are shared with stages and tasks that execute after this stage.
+   */
   public static final class HelloStageContext {
     private final String yourName;
 
