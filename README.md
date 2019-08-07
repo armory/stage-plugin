@@ -11,6 +11,7 @@ Recommended fields include:
 - name
 - description
 - version
+- manifestVersion
 - options
   - plugin configuration options
 - jars
