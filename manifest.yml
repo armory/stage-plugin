@@ -1,5 +1,6 @@
 name: armory/mysuperduperplugin
 description: My super plugin allows you to do stuff
+manifestVersion: 1.0.0
 version: 1.2.3
 options:
   superserver:
