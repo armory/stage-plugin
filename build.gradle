@@ -15,24 +15,22 @@ repositories {
 }
 
 dependencies {
- 	compileOnly "org.projectlombok:lombok:1.16.20"
- 	annotationProcessor "org.projectlombok:lombok:1.16.20"
+	compileOnly 'org.projectlombok:lombok:1.18.8'
+	annotationProcessor 'org.projectlombok:lombok:1.18.8'
 
-    // https://mvnrepository.com/artifact/org.springframework/spring-beans
+	// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.28'
+
+	// https://mvnrepository.com/artifact/org.springframework/spring-beans
     compile group: 'org.springframework', name: 'spring-beans', version: '5.1.7.RELEASE'
 
     // https://mvnrepository.com/artifact/org.springframework/spring-beans
     compile group: 'org.springframework', name: 'spring-context', version: '5.1.7.RELEASE'
 
-	// Eventually will just pull in orca-api, no orca-core
-	// maven local
-//	compile group: 'com.netflix.spinnaker.orca', name: 'orca-api', version: '7.6.2'
-	// https://mvnrepository.com/artifact/com.netflix.spinnaker.orca/orca-core
-	compile group: 'com.netflix.spinnaker.orca', name: 'orca-core', version: '7.6.2'
-
-	// https://mvnrepository.com/artifact/com.netflix.spinnaker.kork/kork-core
-	compile group: 'com.netflix.spinnaker.kork', name: 'kork-core', version: '3.12.2'
-
-	// https://mvnrepository.com/artifact/com.netflix.spinnaker.kork/kork-artifacts
-	compile group: 'com.netflix.spinnaker.kork', name: 'kork-artifacts', version: '3.12.2'
+	// Currently there is no version for orca-api! Once the PR to add this ability
+	// has been merged into Orca and a version is cut, the version number will be updated.
+	// But you can check out the code base and build it your self and set the version to test
+	// this out
+	// https://mvnrepository.com/artifact/com.netflix.spinnaker.orca/orca-api
+	compile group: 'com.netflix.spinnaker.orca', name: 'orca-api', version: '1'
 }
