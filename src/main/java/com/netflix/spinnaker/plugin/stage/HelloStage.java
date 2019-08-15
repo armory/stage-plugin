@@ -16,29 +16,25 @@
 
 package com.netflix.spinnaker.plugin.stage;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.netflix.spinnaker.orca.pipeline.StageDefinitionBuilder;
-import com.netflix.spinnaker.orca.pipeline.TaskNode;
-import com.netflix.spinnaker.orca.pipeline.model.Stage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.netflix.spinnaker.orca.api.Stage;
+import com.netflix.spinnaker.orca.api.StageInput;
+import com.netflix.spinnaker.orca.api.StageOutput;
+import com.netflix.spinnaker.orca.api.StageStatus;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Nullable;
-
 import javax.annotation.PostConstruct;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Example stage that implements stage definition builder. By implementing StageDefinitionBuilder,
  * your stage is available for use in Spinnaker.
  */
+@Slf4j
 @Component
-public class HelloStage implements StageDefinitionBuilder {
-
-  private static final Logger log = LoggerFactory.getLogger(HelloStage.class);
-  public static String STAGE_TYPE = "hello";
+public class HelloStage implements Stage<HelloDataModel> {
 
   @Value("${plugins.armory/mysuperduperplugin.superserver.url}")
   /**
@@ -55,33 +51,20 @@ public class HelloStage implements StageDefinitionBuilder {
     log.error(TEST_VALUE);
   }
 
-  /**
-   * This method defines the set of tasks for this stage. This method is required.
-   *
-   * @param stage
-   * @param builder
-   */
   @Override
-  public void taskGraph(Stage stage, TaskNode.Builder builder) {
-    // Task name can be changed per stage,
-    builder.withTask(HelloTask.TASK_NAME, HelloTask.class);
+  public String getName() {
+    return "helloStage";
   }
 
-  /**
-   * Context for this stage. The contents of this context are shared with stages and tasks that execute after this stage.
-   */
-  public static final class HelloStageContext {
-    private final String yourName;
+  @Override
+  public <HelloDataModel>StageOutput execute(StageInput<HelloDataModel> stageInput) {
+    StageOutput output = new StageOutput();
+    Map<String, String> data = new HashMap<>();
 
-    @JsonCreator
-    public HelloStageContext(
-      @JsonProperty("yourName") @Nullable String yourName
-    ) {
-      this.yourName = yourName;
-    }
+    data.put("hello", "world");
+    output.setOutputs(data);
+    output.setStatus(StageStatus.COMPLETED);
 
-    public @Nullable String getYourName() {
-      return yourName;
-    }
+    return output;
   }
 }
