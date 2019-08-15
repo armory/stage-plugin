@@ -27,6 +27,10 @@ dependencies {
     // https://mvnrepository.com/artifact/org.springframework/spring-beans
     compile group: 'org.springframework', name: 'spring-context', version: '5.1.7.RELEASE'
 
+	// Currently there is no version for orca-api! Once the PR to add this ability
+	// has been merged into Orca and a version is cut, the version number will be updated.
+	// But you can check out the code base and build it your self and set the version to test
+	// this out
 	// https://mvnrepository.com/artifact/com.netflix.spinnaker.orca/orca-api
 	compile group: 'com.netflix.spinnaker.orca', name: 'orca-api', version: '1'
 }
