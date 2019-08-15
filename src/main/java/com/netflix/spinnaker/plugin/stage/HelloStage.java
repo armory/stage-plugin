@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Netflix, Inc.
+ * Copyright 2019 Armory, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Example stage that implements stage definition builder. By implementing StageDefinitionBuilder,
+ * Example stage that implements the Orca API Stage interface. By implementing Stage,
  * your stage is available for use in Spinnaker.
  */
 @Slf4j
@@ -51,11 +51,24 @@ public class HelloStage implements Stage<HelloDataModel> {
     log.error(TEST_VALUE);
   }
 
+  /**
+   * This sets the name of the stage
+   * @return the name of the stage
+   */
   @Override
   public String getName() {
     return "helloStage";
   }
 
+  /**
+   * This is what gets ran when the stage is executed. It takes in an object that you create. That
+   * object contains fields that one wishes to pull out of the pipeline context. This gives us a
+   * strongly typed object that you have full control over. The function returns a StageOutput object.
+   * The StageOutput class contains the status of the stage and any stage outputs that should be
+   * put back into the pipeline context.
+   * @param stageInput<HelloDataModel>
+   * @return the status of the stage and any context that should be passed to the pipeline context
+   */
   @Override
   public <HelloDataModel>StageOutput execute(StageInput<HelloDataModel> stageInput) {
     StageOutput output = new StageOutput();
