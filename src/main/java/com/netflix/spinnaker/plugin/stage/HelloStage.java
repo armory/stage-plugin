@@ -16,10 +16,10 @@
 
 package com.netflix.spinnaker.plugin.stage;
 
-import com.netflix.spinnaker.orca.api.Stage;
-import com.netflix.spinnaker.orca.api.StageInput;
-import com.netflix.spinnaker.orca.api.StageOutput;
-import com.netflix.spinnaker.orca.api.StageStatus;
+import com.netflix.spinnaker.orca.api.SimpleStage;
+import com.netflix.spinnaker.orca.api.SimpleStageInput;
+import com.netflix.spinnaker.orca.api.SimpleStageOutput;
+import com.netflix.spinnaker.orca.api.SimpleStageStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -34,7 +34,7 @@ import java.util.Map;
  */
 @Slf4j
 @Component
-public class HelloStage implements Stage<HelloDataModel> {
+public class HelloStage implements SimpleStage<HelloDataModel> {
 
   @Value("${plugins.armory/mysuperduperplugin.superserver.url}")
   /**
@@ -63,20 +63,20 @@ public class HelloStage implements Stage<HelloDataModel> {
   /**
    * This is what gets ran when the stage is executed. It takes in an object that you create. That
    * object contains fields that one wishes to pull out of the pipeline context. This gives us a
-   * strongly typed object that you have full control over. The function returns a StageOutput object.
-   * The StageOutput class contains the status of the stage and any stage outputs that should be
+   * strongly typed object that you have full control over. The function returns a SimpleStageOutput object.
+   * The SimpleStageOutput class contains the status of the stage and any stage outputs that should be
    * put back into the pipeline context.
    * @param stageInput<HelloDataModel>
    * @return the status of the stage and any context that should be passed to the pipeline context
    */
   @Override
-  public <HelloDataModel>StageOutput execute(StageInput<HelloDataModel> stageInput) {
-    StageOutput output = new StageOutput();
+  public <HelloDataModel>SimpleStageOutput execute(SimpleStageInput<HelloDataModel> stageInput) {
+    SimpleStageOutput output = new SimpleStageOutput();
     Map<String, String> data = new HashMap<>();
 
     data.put("hello", "world");
     output.setOutputs(data);
-    output.setStatus(StageStatus.COMPLETED);
+    output.setStatus(SimpleStageStatus.COMPLETED);
 
     return output;
   }
