@@ -17,3 +17,7 @@ Recommended fields include:
 - jars
   - list of jars required for the plugin
 
+## Building
+`./gradlew clean build`
+
+This will build a jar file that lives in `./build/libs` that will be the plugin jar that gets passed into Orca
