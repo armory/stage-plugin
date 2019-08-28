@@ -3,8 +3,13 @@ description: My super plugin allows you to do stuff
 manifestVersion: 1.0.0
 version: 1.2.3
 options:
-  superserver:
+  example:
     url: string
     port: integer
+    nested:
+      foo: bar
+    list:
+      - first
+      - second
 jars:
 - https://stage-plugin-test.s3-us-west-2.amazonaws.com/stage-plugin-0.0.1-SNAPSHOT.jar
