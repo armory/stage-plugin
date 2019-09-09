@@ -70,14 +70,15 @@ public class HelloStage implements SimpleStage<HelloDataModel> {
    * @return the status of the stage and any context that should be passed to the pipeline context
    */
   @Override
-  public <HelloDataModel>SimpleStageOutput execute(SimpleStageInput<HelloDataModel> stageInput) {
-    SimpleStageOutput output = new SimpleStageOutput();
-    Map<String, String> data = new HashMap<>();
+  public SimpleStageOutput execute(SimpleStageInput<HelloDataModel> stageInput) {
+    SimpleStageOutput<Output, Context> stageOutput = new SimpleStageOutput();
+    Output output = new Output("helloworld");
+    Context context = new Context("goodbyeworld");
 
-    data.put("hello", "world");
-    output.setOutputs(data);
-    output.setStatus(SimpleStageStatus.COMPLETED);
+    stageOutput.setOutput(output);
+    stageOutput.setContext(context);
+    stageOutput.setStatus(SimpleStageStatus.SUCCEEDED);
 
-    return output;
+    return stageOutput;
   }
 }
