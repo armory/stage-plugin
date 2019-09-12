@@ -32,5 +32,5 @@ dependencies {
 	// But you can check out the code base and build it your self and set the version to test
 	// this out
 	// https://mvnrepository.com/artifact/com.netflix.spinnaker.orca/orca-api
-	compile group: 'com.netflix.spinnaker.orca', name: 'orca-api', version: '1'
+	compile group: 'com.netflix.spinnaker.orca', name: 'orca-api', version: '7.36.0'
 }
