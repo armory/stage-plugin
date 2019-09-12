@@ -17,9 +17,9 @@
 package com.netflix.spinnaker.plugin.stage;
 
 public class Output {
-  public String thing1;
+  public String myOutput;
 
-  public Output(String thing1) {
-    this.thing1 = thing1;
+  public Output(String myOutput) {
+    this.myOutput = myOutput;
   }
 }

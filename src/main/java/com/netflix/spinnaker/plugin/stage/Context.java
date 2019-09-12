@@ -17,9 +17,9 @@
 package com.netflix.spinnaker.plugin.stage;
 
 public class Context {
-  public String thing2;
+  public String myContext;
 
-  public Context(String thing2) {
-    this.thing2 = thing2;
+  public Context(String myContext) {
+    this.myContext = myContext;
   }
 }
