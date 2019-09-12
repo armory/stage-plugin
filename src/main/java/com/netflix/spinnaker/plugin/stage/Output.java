@@ -17,9 +17,11 @@
 package com.netflix.spinnaker.plugin.stage;
 
 public class Output {
-  public String myOutput;
+  public String artifactName;
+  public String artifactId;
 
-  public Output(String myOutput) {
-    this.myOutput = myOutput;
+  public Output(String artifactName, String artifactId) {
+    this.artifactName = artifactName;
+    this.artifactId = artifactId;
   }
 }

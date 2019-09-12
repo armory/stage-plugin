@@ -72,7 +72,7 @@ public class HelloStage implements SimpleStage<HelloDataModel> {
   @Override
   public SimpleStageOutput execute(SimpleStageInput<HelloDataModel> stageInput) {
     SimpleStageOutput<Output, Context> stageOutput = new SimpleStageOutput();
-    Output output = new Output("helloworld");
+    Output output = new Output("myawesomeartifact", "012345566789");
     Context context = new Context("goodbyeworld");
 
     stageOutput.setOutput(output);
