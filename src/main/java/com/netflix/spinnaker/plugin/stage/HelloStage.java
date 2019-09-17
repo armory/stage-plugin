@@ -36,7 +36,7 @@ import java.util.Map;
 @Component
 public class HelloStage implements SimpleStage<HelloDataModel> {
 
-  @Value("${plugins.armory/mysuperduperplugin.superserver.url}")
+  @Value("${plugins.armory/mysuperduperplugin.example.url}")
   /**
    * Service configuration values are accessible by the plugin
    */
