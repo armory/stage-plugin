@@ -17,9 +17,9 @@
 package com.netflix.spinnaker.plugin.stage;
 
 public class Context {
-  public String myContext;
+  public int maxWaitTime;
 
-  public Context(String myContext) {
-    this.myContext = myContext;
+  public Context(int maxWaitTime) {
+    this.maxWaitTime = maxWaitTime;
   }
 }

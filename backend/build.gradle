@@ -2,7 +2,7 @@ plugins {
 	id 'java'
 }
 
-group = 'io.armory.spinnaker'
+group = 'com.netflix.spinnaker.plugin'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 

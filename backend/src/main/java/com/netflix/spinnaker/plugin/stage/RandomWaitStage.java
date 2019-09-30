@@ -24,9 +24,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
+import javax.annotation.PostConstruct;
 
 /**
  * Example stage that implements the Orca API Stage interface. By implementing Stage,
@@ -34,7 +36,7 @@ import java.util.Map;
  */
 @Slf4j
 @Component
-public class HelloStage implements SimpleStage<HelloDataModel> {
+public class RandomWaitStage implements SimpleStage<RandomWaitInput> {
 
   @Value("${plugins.armory/mysuperduperplugin.example.url}")
   /**
@@ -57,7 +59,7 @@ public class HelloStage implements SimpleStage<HelloDataModel> {
    */
   @Override
   public String getName() {
-    return "helloStage";
+    return "randomWait";
   }
 
   /**
@@ -66,14 +68,24 @@ public class HelloStage implements SimpleStage<HelloDataModel> {
    * strongly typed object that you have full control over. The function returns a SimpleStageOutput object.
    * The SimpleStageOutput class contains the status of the stage and any stage outputs that should be
    * put back into the pipeline context.
-   * @param stageInput<HelloDataModel>
+   * @param stageInput<RandomWaitInput>
    * @return the status of the stage and any context that should be passed to the pipeline context
    */
   @Override
-  public SimpleStageOutput execute(SimpleStageInput<HelloDataModel> stageInput) {
+  public SimpleStageOutput execute(SimpleStageInput<RandomWaitInput> stageInput) {
+    Random rand = new Random();
+    int maxWaitTime = stageInput.getValue().getMaxWaitTime();
+    int timeToWait = rand.nextInt(maxWaitTime);
+
+    try {
+      TimeUnit.SECONDS.sleep(timeToWait);
+    } catch(Exception e) {
+      log.error("{}", e);
+    }
+
     SimpleStageOutput<Output, Context> stageOutput = new SimpleStageOutput();
-    Output output = new Output("myawesomeartifact", "012345566789");
-    Context context = new Context("goodbyeworld");
+    Output output = new Output(timeToWait);
+    Context context = new Context(maxWaitTime);
 
     stageOutput.setOutput(output);
     stageOutput.setContext(context);

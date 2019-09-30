@@ -24,7 +24,6 @@ import lombok.Data;
  * exactly what is pulled into the stage this way
  */
 @Data
-public class HelloDataModel {
-    private String artifactId;
-    private String artifactLocation;
+public class RandomWaitInput {
+    private int maxWaitTime;
 }
