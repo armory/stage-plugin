@@ -5,9 +5,22 @@ import * as React from 'react';
 import { IPluginInitialize, IStageRegistry } from '@spinnaker/plugins';
 
 // Our stage component
-class LikeButton extends React.Component {
+class RandomWaitStage extends React.Component {
+  setMaxWaitTime = (event: React.SyntheticEvent) => {
+    let target = event.target as HTMLInputElement;
+    // @ts-ignore
+    this.props.updateStageField({'maxWaitTime': target.value});
+  }
+
   render() {
-    return ( <div>Hello world, Hello Spinnaker</div> );
+    return (
+      <div>
+        <label>
+            Max Time To Wait
+            <input onChange={this.setMaxWaitTime} id="maxWaitTime" />
+        </label>
+      </div>
+    );
   }
 }
 
@@ -15,15 +28,10 @@ class LikeButton extends React.Component {
 // This is where the stage gets registered.
 function initialize(registry: IStageRegistry): void {
   registry.pipeline.registerStage({
-    label: 'My Stage',
-    description: 'My Stage',
-    key: 'myStage',
-    alias: 'myStage',
-    addAliasToConfig: true,
-    cloudProvider: 'kubernetes',
-    component: LikeButton,
-    supportsCustomTimeout: true,
-    producesArtifacts: true,
+    label: 'Random Wait',
+    description: 'Stage that waits a random amount of time up to the max inputted',
+    key: 'randomWait',
+    component: RandomWaitStage,
   });
 };
 
