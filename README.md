@@ -19,9 +19,8 @@ Recommended fields include:
 
 ## Building
 ### The Backend
-`./gradlew clean build`
 
-This will build a jar file that lives in `./build/libs` that will be the plugin jar that gets passed into Orca
+[Backend README](./backend/README.md)
 
 ### The Frontend
 `yarn && yarn run build`
