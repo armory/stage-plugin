@@ -1,29 +1,21 @@
 ## Objective
-
 This repo contains an example stage plugin. Orca allows for plugins, so 
 this repo will show how to add a stage by implementing two interfaces.
 
 
-## Packaging
-
-Plugins should contain a manifest file, similar to the one present here. 
-Recommended fields include:
-- name
-- description
-- version
-- manifestVersion
-- options
-  - plugin configuration options
-- resources
-  - list of resources needed for each Spinnaker service
+## Plugin Manifest
+[TODO]
 
 ## Building
-### The Backend
-`./gradlew clean build`
+To build both the front end and back end run `./gradlew clean build`.
 
-This will build a jar file that lives in `./build/libs` that will be the plugin jar that gets passed into Orca
+### The Backend
+Check out the README in the backend project.
 
 ### The Frontend
 `yarn && yarn run build`
 
 This will build a compiled javascript bundle that lives in `./dist/index.js`.
+
+## Packaging Everything
+To package up both the front and back ends together run `./gradle distZip`. This will create a zip file in `./build/distributions/` that will contain the zip for the back end code along with the compiled Javascript for the front end. This command has to be ran after compiling happens. It can be appended like so `./gradlew clean build distZip`.

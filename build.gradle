@@ -1,0 +1,15 @@
+plugins {
+    id 'java-library'
+    id 'groovy'
+    id 'distribution'
+}
+
+distributions {
+    main {
+        distributionBaseName = project.name
+        contents {
+            from 'backend/build/libs/'
+            from 'frontend/dist/'
+        }
+    }
+}

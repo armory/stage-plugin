@@ -1,0 +1,22 @@
+plugins {
+  id "com.github.node-gradle.node" version "2.2.0"
+}
+
+apply plugin: 'base'
+
+node {
+  version = '10.15.2'
+  download = true
+}
+
+task runBuild(type: YarnTask) {
+  args = ['build']
+}
+
+clean {
+  delete 'dist'
+  delete 'node_modules/'
+}
+
+runBuild.dependsOn npm_install
+build.dependsOn runBuild
