@@ -10,13 +10,11 @@ const customStage: IStageTypeConfig = {
 
 function setMaxWaitTime(event: React.SyntheticEvent, props: IStageConfigProps) {
   let target = event.target as HTMLInputElement;
-  // @ts-ignore
   props.updateStageField({'maxWaitTime': target.value});
 }
 
 // Our stage component
 function RandomWaitStage(props: IStageConfigProps) {
-  console.error(props);
   return (
     <div>
       <label>
