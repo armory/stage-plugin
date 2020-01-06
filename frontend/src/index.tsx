@@ -19,7 +19,7 @@ function RandomWaitStage(props: IStageConfigProps) {
     <div>
       <label>
           Max Time To Wait
-          <input onChange={(e) => setMaxWaitTime(e, props)} id="maxWaitTime" />
+          <input value={props.stage.maxWaitTime} onChange={(e) => setMaxWaitTime(e, props)} id="maxWaitTime" />
       </label>
     </div>
   );
